@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Footer, Navbar, ScrollToTop } from "./components";
+import GlobalStyles from './globalStyle.js'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route } from "react-router-dom";
+import Home from "./pages/HomePage/Home";
+import { footerData, menuItems } from "./connfig/data";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <GlobalStyles />
+      <ScrollToTop/>
+      <Navbar menuItems={menuItems} />
+      <Switch>
+        <Route path='/' component={Home} />
+      </Switch>
+      <Footer {...footerData} menuItems={menuItems} />
+    </Router>
   );
 }
 
